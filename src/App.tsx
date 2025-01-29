@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-import Auth from '@/Auth'
+import './index.css'
+import { Routes, Route } from 'react-router-dom'
+import Login from '@/components/Login'
+import Dashboard from '@/pages/Dashboard'
 
-function App() {
+export default function App() {
   return (
-    <>
-      <h1>Hi There! Budget APp</h1>
-
-      <Auth />
-    </>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      {/* Other routes */}
+    </Routes>
   )
 }
-
-export default App
