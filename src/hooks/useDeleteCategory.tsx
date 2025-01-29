@@ -13,6 +13,7 @@ export default function useDeleteCategory() {
 
       if (error) {
         console.error('Failed to delete category:', error.message)
+        return
       }
 
       deleteCategoryFromStore(categoryID)
