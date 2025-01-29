@@ -18,25 +18,32 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="container">
+      <header className="mainHeader">
+        <h1>Dashboard</h1>
+      </header>
 
-      <div>
+      <div className="card">
         <p>Welcome, {user.email}</p>
-        <h2>Your categories</h2>
+        <h2>Your Categories</h2>
         <ul>
           {userCategories.map(category => {
             return (
-              <li key={category.id}>
-                {category.name}
-                <button onClick={() => handleCategoryDelete(category.id)}>Delete Category</button>
+              <li key={category.id} className="flex flex-row justify-between items-center">
+                <span>{category.name}</span>
+                <button
+                  onClick={() => handleCategoryDelete(category.id)}
+                  className="button primary"
+                >
+                  Delete Category
+                </button>
               </li>
             )
           })}
         </ul>
       </div>
 
-      <div>
+      <div className="card">
         <CategoryForm />
       </div>
     </div>
