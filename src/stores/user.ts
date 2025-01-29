@@ -30,6 +30,7 @@ export interface UserState {
   setCategories: (categories: Category[]) => void
   addCategory: (category: Category) => void
   removeCategory: (categoryID: number) => void
+  updateCategory: (categoryID: number, newName: string) => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -49,6 +50,12 @@ export const useUserStore = create<UserState>()(
         removeCategory: categoryID =>
           set(state => ({
             categories: state.categories.filter(category => category.id !== categoryID),
+          })),
+        updateCategory: (categoryID, newName) =>
+          set(state => ({
+            categories: state.categories.map(category =>
+              category.id === categoryID ? { ...category, name: newName } : category,
+            ),
           })),
       }),
       {
