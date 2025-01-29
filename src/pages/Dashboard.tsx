@@ -1,5 +1,6 @@
 import { useUserStore, UserState } from '@/stores/user'
 import useCategories from '@/hooks/useCategories'
+import CategoryForm from '@/components/CategoryForm'
 
 export default function Dashboard() {
   const user = useUserStore((state: UserState) => state.user)
@@ -22,7 +23,10 @@ export default function Dashboard() {
             return <li key={category.id}>{category.name}</li>
           })}
         </ul>
-        <button onClick={() => console.log('test click')}>Sign Out</button>
+      </div>
+
+      <div>
+        <CategoryForm />
       </div>
     </div>
   )
