@@ -28,10 +28,8 @@ export interface UserState {
   expenses: Expense[]
   setUser: (user: User | null) => void
   setCategories: (categories: Category[]) => void
-  setExpenses: (expenses: Expense[]) => void
-  addExpense: (expense: Expense) => void
-  removeExpense: (expenseId: number) => void
   addCategory: (category: Category) => void
+  removeCategory: (categoryID: number) => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -44,18 +42,13 @@ export const useUserStore = create<UserState>()(
         expenses: [],
         setUser: user => set({ user }),
         setCategories: categories => set({ categories }),
-        setExpenses: expenses => set({ expenses }),
-        addExpense: expense =>
-          set(state => ({
-            expenses: [...state.expenses, expense],
-          })),
-        removeExpense: expenseId =>
-          set(state => ({
-            expenses: state.expenses.filter(expense => expense.id !== expenseId),
-          })),
         addCategory: category =>
           set(state => ({
             categories: [...state.categories, category],
+          })),
+        removeCategory: categoryID =>
+          set(state => ({
+            categories: state.categories.filter(category => category.id !== categoryID),
           })),
       }),
       {
