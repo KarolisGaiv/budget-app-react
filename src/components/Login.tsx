@@ -19,16 +19,43 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleLogin} className="form-widget">
-      <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-      <input
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Sign In</button>
-      {error && <p>{error}</p>}
+    <form
+      onSubmit={handleLogin}
+      className="max-w-sm mx-auto p-6 bg-gray-800 text-white shadow-lg rounded-lg space-y-4"
+    >
+      <div>
+        <label className="block text-sm font-medium">Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          className="w-full p-2 border border-gray-600 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your email"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium">Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          className="w-full p-2 border border-gray-600 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <div className="flex flex-col items-center gap-4">
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Sign In
+        </button>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+      </div>
     </form>
   )
 }
