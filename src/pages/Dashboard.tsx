@@ -24,39 +24,6 @@ export default function Dashboard() {
     return <p>Please log in to access the dashboard.</p>
   }
 
-  // return (
-  //   <div className="container">
-  //     <header className="mainHeader">
-  //       <h1>Dashboard</h1>
-  //     </header>
-
-  //     <div className="card">
-  //       <p>Welcome, {user.email}</p>
-  //       <h2>Your Categories</h2>
-  //       <ul>
-  //         {userCategories.map(category => {
-  //           return (
-  //             <li key={category.id} className="flex flex-row justify-between items-center">
-  //               <span>{category.name}</span>
-  //               <button
-  //                 onClick={() => handleCategoryDelete(category.id)}
-  //                 className="button primary"
-  //               >
-  //                 Delete Category
-  //               </button>
-  //               <button>Add expense</button>
-  //             </li>
-  //           )
-  //         })}
-  //       </ul>
-  //     </div>
-
-  //     <div className="card">
-  //       <CategoryForm />
-  //     </div>
-  //   </div>
-  // )
-
   return (
     <div className="container">
       <header className="mainHeader">
