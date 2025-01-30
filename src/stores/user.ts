@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
-interface Expense {
+export interface Expense {
   id: number
   user_id: string
   amount: number
@@ -31,6 +31,7 @@ export interface UserState {
   addCategory: (category: Category) => void
   removeCategory: (categoryID: number) => void
   updateCategory: (categoryID: number, newName: string) => void
+  addExpense: (expense: Expense) => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -56,6 +57,10 @@ export const useUserStore = create<UserState>()(
             categories: state.categories.map(category =>
               category.id === categoryID ? { ...category, name: newName } : category,
             ),
+          })),
+        addExpense: newExpenseRecord =>
+          set(state => ({
+            expenses: [...state.expenses, newExpenseRecord],
           })),
       }),
       {
