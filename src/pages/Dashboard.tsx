@@ -4,7 +4,6 @@ import CategoryForm from '@/components/CategoryForm'
 import useDeleteCategory from '@/hooks/useDeleteCategory'
 import ExpenseForm from '@/components/ExpenseForm'
 import { useState } from 'react'
-import useExpenses from '@/hooks/useExpenses'
 
 export default function Dashboard() {
   const user = useUserStore((state: UserState) => state.user)
@@ -12,9 +11,7 @@ export default function Dashboard() {
   const userCategories = useUserStore((state: UserState) => state.categories)
   const removeCategory = useDeleteCategory()
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
-  const expenses = useUserStore((state: UserState) => state.expenses) // Get expenses from store
-
-  // useExpenses()
+  const expenses = useUserStore((state: UserState) => state.expenses)
 
   function handleCategoryDelete(id: number) {
     removeCategory(id)
