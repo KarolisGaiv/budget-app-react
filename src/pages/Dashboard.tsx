@@ -36,12 +36,15 @@ export default function Dashboard() {
       <div className="card">
         <p>Welcome, {user.email}</p>
         <h2>Your Categories</h2>
-        <ul>
+        <ul className="space-y-4">
           {userCategories.map(category => {
             const categoryExpenses = expenses.filter(expense => expense.category === category.name)
 
             return (
-              <li key={category.id} className="p-4 rounded-lg shadow">
+              <li
+                key={category.id}
+                className="flex justify-between items-center p-4 bg-gray-700 rounded-md shadow-sm hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all"
+              >
                 <div className="flex justify-between items-center">
                   <span className="font-medium text-lg">{category.name}</span>
                   <div className="flex gap-2">
