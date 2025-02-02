@@ -40,28 +40,6 @@ export default function Dashboard() {
         <p>Welcome, {user.email}</p>
         <h2>Your Categories</h2>
         <ul>
-          {/* {userCategories.map(category => (
-            <li key={category.id} className="flex flex-col gap-2">
-              <div className="flex flex-row justify-between items-center">
-                <span>{category.name}</span>
-                <button
-                  onClick={() => handleCategoryDelete(category.id)}
-                  className="px-4 py-2 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 dark:hover:bg-red-600 transition"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => toggleExpenseForm(category.name)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600 dark:hover:bg-blue-600 transition"
-                >
-                  {activeCategory === category.name ? 'Cancel' : 'Add Expense'}
-                </button>
-              </div>
-              {activeCategory === category.name && (
-                <ExpenseForm categoryName={category.name} onClose={() => setActiveCategory(null)} />
-              )}
-            </li>
-          ))} */}
           {userCategories.map(category => {
             const categoryExpenses = expenses.filter(expense => expense.category === category.name)
 
