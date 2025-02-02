@@ -46,16 +46,23 @@ export default function Dashboard() {
                 className="flex justify-between items-center p-4 bg-gray-700 rounded-md shadow-sm hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all"
               >
                 <div className="flex justify-between items-center">
-                  <span className="font-medium text-lg">{category.name}</span>
-                  <div className="flex gap-2">
-                    <button onClick={() => handleCategoryDelete(category.id)}>Delete</button>
-                    <button onClick={() => toggleExpenseForm(category.name)}>
+                  <span className="text-lg">{category.name}</span>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => handleCategoryDelete(category.id)}
+                      className="px-4 py-2 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 dark:hover:bg-red-600 transition"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md text-sm hover:bg-blue-600 dark:hover:bg-blue-600 transition"
+                      onClick={() => toggleExpenseForm(category.name)}
+                    >
                       {activeCategory === category.name ? 'Cancel' : 'Add Expense'}
                     </button>
                   </div>
                 </div>
 
-                {/* Expense List */}
                 {categoryExpenses.length > 0 ? (
                   <ul className="mt-2 space-y-2">
                     {categoryExpenses.map(expense => (
@@ -73,7 +80,6 @@ export default function Dashboard() {
                   <p className="text-gray-500 text-sm mt-2">No expenses yet.</p>
                 )}
 
-                {/* Expense Form */}
                 {activeCategory === category.name && (
                   <ExpenseForm
                     categoryName={category.name}
