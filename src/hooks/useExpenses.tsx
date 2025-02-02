@@ -24,5 +24,5 @@ export default function useExpenses() {
     }
 
     loadExpenses()
-  }, [user])
+  }, [setExpenses, user])
 }
