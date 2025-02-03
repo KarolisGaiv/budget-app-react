@@ -33,6 +33,7 @@ export interface UserState {
   updateCategory: (categoryID: number, newName: string) => void
   addExpense: (expense: Expense) => void
   setExpenses: (expense: Expense[]) => void
+  deleteExpense: (expenseID: number) => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -64,6 +65,10 @@ export const useUserStore = create<UserState>()(
             expenses: [...state.expenses, newExpenseRecord],
           })),
         setExpenses: expenses => set({ expenses }),
+        deleteExpense: expenseID =>
+          set(state => ({
+            expenses: state.expenses.filter(expense => expense.id !== expenseID),
+          })),
       }),
       {
         name: 'user-store',

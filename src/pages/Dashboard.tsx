@@ -21,6 +21,8 @@ export default function Dashboard() {
     setActiveCategory(prev => (prev === categoryName ? null : categoryName))
   }
 
+  console.log(expenses)
+
   if (!user) {
     return (
       <p className="text-center text-xl text-gray-400">Please log in to access the dashboard.</p>
