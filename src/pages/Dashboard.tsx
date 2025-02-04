@@ -7,6 +7,7 @@ import useLoadIncome from '@/hooks/useLoadIncome'
 import { useState } from 'react'
 import IncomeForm from '@/components/IncomeForm'
 import ExpenseView from '@/pages/ExpenseView'
+import IncomeView from '@/pages/IncomeView'
 
 export default function Dashboard() {
   const user = useUserStore((state: UserState) => state.user)
@@ -63,7 +64,7 @@ export default function Dashboard() {
           </button>
         </div>
       </header>
-      {activeView === 'expenses' ? <ExpenseView /> : 'this will be income view'}
+      {activeView === 'expenses' ? <ExpenseView /> : <IncomeView />}
     </div>
   )
 
