@@ -21,8 +21,9 @@ export default function Login() {
   return (
     <form
       onSubmit={handleLogin}
-      className="max-w-sm mx-auto p-6 bg-gray-800 text-white shadow-lg rounded-lg space-y-4"
+      className="max-w-sm mx-auto p-6 bg-gray-800 text-white shadow-lg rounded-lg space-y-4 mt-12"
     >
+      <h1 className="flex-auto text-center text-3xl">Login</h1>
       <div>
         <label className="block text-sm font-medium">Email:</label>
         <input
