@@ -5,7 +5,7 @@ export default function useAddIncome() {
   const user = useUserStore((state: UserState) => state.user)
   const addIncome = useUserStore((state: UserState) => state.addIncome)
 
-  async function createIncome(incomeDetails: Omit<Income, 'id'>) {
+  async function createIncome(incomeDetails: Omit<Income, 'id' | 'user_id'>) {
     if (!user) return
 
     try {

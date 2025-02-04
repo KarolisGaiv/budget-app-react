@@ -5,6 +5,7 @@ import useDeleteCategory from '@/hooks/useDeleteCategory'
 import ExpenseForm from '@/components/ExpenseForm'
 import useLoadIncome from '@/hooks/useLoadIncome'
 import { useState } from 'react'
+import IncomeForm from '@/components/IncomeForm'
 
 export default function Dashboard() {
   const user = useUserStore((state: UserState) => state.user)
@@ -48,6 +49,7 @@ export default function Dashboard() {
         <div className="my-9">
           <div>
             <h3>Total income: {calculateMonthlyIncome(userIncome)}</h3>
+            <IncomeForm />
           </div>
         </div>
         <ul className="space-y-4">
