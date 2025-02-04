@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import supabase from '@/supabaseClient'
 import { UserState, useUserStore } from '@/stores/user'
 
-export default function useIncome() {
+export default function useLoadIncome() {
   const user = useUserStore((state: UserState) => state.user)
   const saveIncomeToStore = useUserStore((state: UserState) => state.setIncome)
 

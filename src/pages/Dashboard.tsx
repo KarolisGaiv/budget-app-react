@@ -1,8 +1,9 @@
-import { useUserStore, UserState } from '@/stores/user'
+import { useUserStore, UserState, Income } from '@/stores/user'
 import useCategories from '@/hooks/useCategories'
 import CategoryForm from '@/components/CategoryForm'
 import useDeleteCategory from '@/hooks/useDeleteCategory'
 import ExpenseForm from '@/components/ExpenseForm'
+import useLoadIncome from '@/hooks/useLoadIncome'
 import { useState } from 'react'
 
 export default function Dashboard() {
@@ -12,6 +13,9 @@ export default function Dashboard() {
   const removeCategory = useDeleteCategory()
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const expenses = useUserStore((state: UserState) => state.expenses)
+  useLoadIncome()
+
+  const userIncome = useUserStore((state: UserState) => state.income)
 
   function handleCategoryDelete(id: number) {
     removeCategory(id)
@@ -21,7 +25,10 @@ export default function Dashboard() {
     setActiveCategory(prev => (prev === categoryName ? null : categoryName))
   }
 
-  console.log(expenses)
+  function calculateMonthlyIncome(data: Income[]): number {
+    const sum = data.reduce((acc, currentValue) => acc + currentValue.amount, 0)
+    return sum
+  }
 
   if (!user) {
     return (
@@ -38,6 +45,11 @@ export default function Dashboard() {
       <div className="card">
         <p>Welcome, {user.email}</p>
         <h2>Your Categories</h2>
+        <div className="my-9">
+          <div>
+            <h3>Total income: {calculateMonthlyIncome(userIncome)}</h3>
+          </div>
+        </div>
         <ul className="space-y-4">
           {userCategories.map(category => {
             const categoryExpenses = expenses.filter(expense => expense.category === category.name)

@@ -22,7 +22,7 @@ interface User {
   email: string
 }
 
-interface Income {
+export interface Income {
   id: number
   user_id: string
   amount: number
