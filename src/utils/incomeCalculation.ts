@@ -11,6 +11,13 @@ function calculateTotalIncome(data: Income[]): number {
   return totalIncome
 }
 
+/**
+ * Calculates the total income amount for each category from a list of users income
+ *
+ * @param {Income[]} userIncomeData  An array of user income records, which can be retreived from user store
+ * @returns {Array<CategoryTotals>} An array of objects, where each object contains a "category" and "totalAmount"
+ */
+
 function calculateIncomeByCategory(userIncomeData: Income[]): uniqueCategoryData[] {
   const uniqueCategories = [...new Set(userIncomeData.map(record => record.category))]
 
