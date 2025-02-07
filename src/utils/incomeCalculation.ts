@@ -1,25 +1,33 @@
 import { Income } from '@/stores/user'
 
+type uniqueCategoryData = {
+  category: string
+  totalAmount: number
+}
+
 function calculateTotalIncome(data: Income[]): number {
   const totalIncome = data.reduce((acc, currentValue) => acc + currentValue.amount, 0)
 
   return totalIncome
 }
 
-function calculateIncomeByCategory(data: Income[]) {
-  const test = [...new Set(data.map(record => record.category))]
+function calculateIncomeByCategory(userIncomeData: Income[]): uniqueCategoryData[] {
+  const uniqueCategories = [...new Set(userIncomeData.map(record => record.category))]
 
-  //   const amountArr = test.map((record) =>
-  //     if (record.includes)
-  // )
+  const categoryTotals: uniqueCategoryData[] = []
 
-  const amountArr = data.map(record => {
-    if (record.category.includes(test)) {
-      console.log('working')
-    }
+  uniqueCategories.forEach(category => {
+    // filter data for current category
+    const filteredData = userIncomeData.filter(record => record.category === category)
+    // calculate total amount for filtered data
+    const totalAmount = filteredData.reduce((sum, record) => sum + record.amount, 0)
+
+    const categoryTotalObject = { category: category, totalAmount: totalAmount }
+
+    categoryTotals.push(categoryTotalObject)
   })
 
-  console.log(test)
+  return categoryTotals
 }
 
 export { calculateTotalIncome, calculateIncomeByCategory }

@@ -5,7 +5,6 @@ import { calculateTotalIncome, calculateIncomeByCategory } from '@/utils/incomeC
 export default function IncomeView() {
   const incomeData = useUserStore((state: UserState) => state.income)
   const [totalIncome, setTotalIncome] = useState<number>(0)
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   useEffect(() => {
     setTotalIncome(calculateTotalIncome(incomeData))
