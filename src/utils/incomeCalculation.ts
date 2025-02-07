@@ -1,6 +1,6 @@
 import { Income } from '@/stores/user'
 
-type uniqueCategoryData = {
+export type uniqueCategoryData = {
   category: string
   totalAmount: number
 }
