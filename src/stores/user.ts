@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
-export interface Expense {
+export type Expense = {
   id: number
   user_id: string
   amount: number
@@ -22,7 +22,7 @@ interface User {
   email: string
 }
 
-export interface Income {
+export type Income = {
   id: number
   user_id: string
   amount: number
@@ -30,7 +30,7 @@ export interface Income {
   date: string
 }
 
-export interface UserState {
+export type UserState = {
   user: User | null
   categories: Category[]
   expenses: Expense[]
