@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import useCreateCategory from '@/hooks/useCreateCategory'
 
-export default function CategoryForm() {
+type CategoryFormProps = {
+  onClose: () => void
+}
+
+export default function CategoryForm({ onClose }: CategoryFormProps) {
   const [categoryName, setCategoryName] = useState('')
   const createCategory = useCreateCategory()
 
@@ -12,6 +16,7 @@ export default function CategoryForm() {
 
     await createCategory(categoryName)
     setCategoryName('')
+    onClose()
   }
 
   return (
