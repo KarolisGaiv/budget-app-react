@@ -21,8 +21,11 @@ export default function IncomeView() {
 
   return (
     <div className="p-6 bg-gray-900 text-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Your Total Income</h2>
-      <h3 className="font-semibold mb-4">{totalIncome} EUR</h3>
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-semibold mb-4">Your Total Income</h2>
+        <h3 className="font-semibold mb-4">{totalIncome} EUR</h3>
+        <button>Add Category</button>
+      </div>
 
       <ul>
         {incomeByCategory.map(category => {
