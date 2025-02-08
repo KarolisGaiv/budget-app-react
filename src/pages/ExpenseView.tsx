@@ -24,7 +24,7 @@ export default function ExpenseView() {
   return (
     <div className="p-6  text-white rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Your Expenses</h2>
-      <p>Total Spent: {calculateTotalExpenses(expenses)}</p>
+      <p>Total Spent: {calculateTotalExpenses(expenses)} EUR</p>
 
       <ul className="space-y-4 mt-4">
         {userCategories.map(category => {
@@ -56,7 +56,11 @@ export default function ExpenseView() {
               {categoryExpenses.length > 0 ? (
                 <ul className="mt-2 space-y-2">
                   {categoryExpenses.map(expense => (
-                    <li key={expense.id} className="p-2 rounded-md shadow-sm flex justify-between">
+                    <li
+                      key={expense.id}
+                      className="p-2 rounded-md shadow-sm flex justify-between hover:bg-sky-700 cursor-pointer
+"
+                    >
                       <span className="font-medium">
                         {expense.amount} {expense.currency}
                       </span>
