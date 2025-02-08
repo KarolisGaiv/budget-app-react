@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import useAddIncome from '@/hooks/useAddIncome'
 
-export default function IncomeForm() {
+interface IncomeFormProps {
+  preselectedCategory?: string
+  onClose: () => void
+}
+
+export default function IncomeForm({ preselectedCategory = '', onClose }: IncomeFormProps) {
   const [amount, setAmount] = useState<number>(0)
-  const [category, setCategory] = useState<string>('')
+  const [category, setCategory] = useState<string>(preselectedCategory)
   const [date, setDate] = useState<string>('')
   const [error, setError] = useState<string>('')
 
-  // Use the custom hook
   const addIncome = useAddIncome()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -18,22 +22,16 @@ export default function IncomeForm() {
       return
     }
 
-    // Create income object to pass to the hook
-    const incomeDetails = { amount, category, date }
+    await addIncome({ amount, category, date })
 
-    // Use the custom hook to add income
-    await addIncome(incomeDetails)
-
-    // Reset form state
     setAmount(0)
-    setCategory('')
     setDate('')
     setError('')
+    onClose() // Close modal after submission
   }
 
   return (
-    <div className="card">
-      <h3>Add New Income</h3>
+    <div className="text-white">
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -43,8 +41,8 @@ export default function IncomeForm() {
             id="amount"
             value={amount}
             onChange={e => setAmount(Number(e.target.value))}
-            placeholder="Enter amount"
             required
+            className="w-full p-2 bg-gray-700 rounded"
           />
         </div>
 
@@ -55,8 +53,9 @@ export default function IncomeForm() {
             id="category"
             value={category}
             onChange={e => setCategory(e.target.value)}
-            placeholder="Enter category"
+            disabled={!!preselectedCategory} // Disable if preselected
             required
+            className="w-full p-2 bg-gray-700 rounded"
           />
         </div>
 
@@ -68,12 +67,18 @@ export default function IncomeForm() {
             value={date}
             onChange={e => setDate(e.target.value)}
             required
+            className="w-full p-2 bg-gray-700 rounded"
           />
         </div>
 
-        <button className="my-8" type="submit">
-          Add Income
-        </button>
+        <div className="flex justify-end gap-2 mt-4">
+          <button type="button" onClick={onClose} className="bg-gray-600 p-2 rounded">
+            Cancel
+          </button>
+          <button className="bg-blue-500 p-2 rounded" type="submit">
+            Add Income
+          </button>
+        </div>
       </form>
     </div>
   )
