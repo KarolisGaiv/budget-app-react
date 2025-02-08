@@ -23,8 +23,11 @@ export default function ExpenseView() {
 
   return (
     <div className="p-6  text-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Your Expenses</h2>
-      <p>Total Spent: {calculateTotalExpenses(expenses)} EUR</p>
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-semibold mb-4">Your Expenses</h2>
+        <p>Total Spent: {calculateTotalExpenses(expenses)} EUR</p>
+        <button>Add Category</button>
+      </div>
 
       <ul className="space-y-4 mt-4">
         {userCategories.map(category => {
