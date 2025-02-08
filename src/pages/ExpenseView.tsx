@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useUserStore, UserState, Expense } from '@/stores/user'
 import ExpenseForm from '@/components/ExpenseForm'
 import useDeleteCategory from '@/hooks/useDeleteCategory'
@@ -10,6 +10,7 @@ export default function ExpenseView() {
   const removeCategory = useDeleteCategory()
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [isCategoryFormVisible, setIsCategoryFormVisible] = useState(false)
+  const modalOverlayRef = useRef<HTMLDivElement>(null) // Ref for the modal overlay
 
   function handleCategoryDelete(id: number) {
     removeCategory(id)
@@ -29,6 +30,12 @@ export default function ExpenseView() {
 
   function handleCloseCategoryForm() {
     setIsCategoryFormVisible(false)
+  }
+
+  function handleOverlayClick(event: React.MouseEvent<HTMLDivElement>) {
+    if (event.target === modalOverlayRef.current) {
+      handleCloseCategoryForm()
+    }
   }
 
   return (
@@ -93,7 +100,11 @@ export default function ExpenseView() {
       </ul>
 
       {isCategoryFormVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div
+          ref={modalOverlayRef}
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          onClick={handleOverlayClick}
+        >
           <CategoryForm onClose={handleCloseCategoryForm} />
         </div>
       )}
