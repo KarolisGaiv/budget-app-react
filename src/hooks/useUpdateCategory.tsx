@@ -2,7 +2,7 @@ import supabase from '@/supabaseClient'
 import { useUserStore, UserState } from '@/stores/user'
 
 export default function useUpdateCategory() {
-  const updateCategoryInStore = useUserStore((state: UserState) => state.updateCategory) //
+  const updateCategoryInStore = useUserStore((state: UserState) => state.updateExpenseCategory) //
 
   async function updateCategory(categoryID: number, newName: string) {
     try {

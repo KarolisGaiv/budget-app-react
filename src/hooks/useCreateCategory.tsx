@@ -3,7 +3,7 @@ import { useUserStore, UserState } from '@/stores/user'
 
 export default function useCreateCategory() {
   const user = useUserStore((state: UserState) => state.user)
-  const addCategory = useUserStore((state: UserState) => state.addCategory)
+  const addCategory = useUserStore((state: UserState) => state.addExpenseCategory)
 
   const createCategory = async (categoryName: string) => {
     if (!user) return

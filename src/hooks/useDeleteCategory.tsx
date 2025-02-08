@@ -3,7 +3,7 @@ import { useUserStore, UserState } from '@/stores/user'
 
 export default function useDeleteCategory() {
   const user = useUserStore((state: UserState) => state.user)
-  const deleteCategoryFromStore = useUserStore((state: UserState) => state.removeCategory)
+  const deleteCategoryFromStore = useUserStore((state: UserState) => state.removeExpenseCategory)
 
   async function removeCategory(categoryID: number) {
     if (!user) return
