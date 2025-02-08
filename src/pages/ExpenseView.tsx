@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
-import { useUserStore, UserState, Expense } from '@/stores/user'
+import { useUserStore, UserState } from '@/stores/user'
 import ExpenseForm from '@/components/ExpenseForm'
 import useDeleteCategory from '@/hooks/useDeleteCategory'
 import CategoryForm from '@/components/CategoryForm'
+import { calculateTotalExpense } from '@/utils/expenseCalculation'
 
 export default function ExpenseView() {
   const userCategories = useUserStore((state: UserState) => state.categories)
@@ -18,10 +19,6 @@ export default function ExpenseView() {
 
   function toggleExpenseForm(categoryName: string) {
     setActiveCategory(prev => (prev === categoryName ? null : categoryName))
-  }
-
-  function calculateTotalExpenses(data: Expense[]): number {
-    return data.reduce((acc, expense) => acc + expense.amount, 0)
   }
 
   function handleAddCategoryClick() {
@@ -42,7 +39,7 @@ export default function ExpenseView() {
     <div className="p-6  text-white rounded-lg shadow-md">
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold mb-4">Your Expenses</h2>
-        <p>Total Spent: {calculateTotalExpenses(expenses)} EUR</p>
+        <p>Total Spent: {calculateTotalExpense(expenses)} EUR</p>
         <button onClick={handleAddCategoryClick}>Add Category</button>
       </div>
 
