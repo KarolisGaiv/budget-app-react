@@ -6,23 +6,24 @@ interface IncomeFormProps {
   onClose: () => void
 }
 
-export default function IncomeForm({ preselectedCategory = '', onClose }: IncomeFormProps) {
+export default function IncomeForm({ preselectedCategory, onClose }: IncomeFormProps) {
   const [amount, setAmount] = useState<number>(0)
-  const [category, setCategory] = useState<string>(preselectedCategory)
+  const [category, setCategory] = useState<string>(preselectedCategory || '')
   const [date, setDate] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // custom hook to add income to user db and state
   const addIncome = useAddIncome()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!amount || !category || !date) {
+    if (!amount || (!category && !preselectedCategory) || !date) {
       setError('All fields are required.')
       return
     }
 
-    await addIncome({ amount, category, date })
+    await addIncome({ amount, category: preselectedCategory || category, date })
 
     setAmount(0)
     setDate('')
@@ -46,18 +47,20 @@ export default function IncomeForm({ preselectedCategory = '', onClose }: Income
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            id="category"
-            value={category}
-            onChange={e => setCategory(e.target.value)}
-            disabled={!!preselectedCategory} // Disable if preselected
-            required
-            className="w-full p-2 bg-gray-700 rounded"
-          />
-        </div>
+        {/* Show category input only if the user is NOT adding to a preselected category */}
+        {!preselectedCategory && (
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <input
+              type="text"
+              id="category"
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+              required
+              className="w-full p-2 bg-gray-700 rounded"
+            />
+          </div>
+        )}
 
         <div className="form-group">
           <label htmlFor="date">Date</label>
