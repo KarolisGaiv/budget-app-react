@@ -24,7 +24,7 @@ export default function IncomeView() {
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold mb-4">Your Total Income</h2>
         <h3 className="font-semibold mb-4">{totalIncome} EUR</h3>
-        <button>Add Category</button>
+        <button onClick={() => setSelectedCategory('new-category')}>Add Category</button>
       </div>
 
       <ul>
@@ -46,9 +46,16 @@ export default function IncomeView() {
       {selectedCategory && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96">
-            <h3 className="text-lg font-semibold mb-4">Add Income to {selectedCategory}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {selectedCategory === 'new-category'
+                ? 'Add New Income Category'
+                : `Add Income to ${selectedCategory}`}
+            </h3>
             <IncomeForm
-              preselectedCategory={selectedCategory}
+              preselectedCategory={
+                selectedCategory === 'new-category' ? undefined : selectedCategory
+              }
+              isNewCategory={selectedCategory === 'new-category'}
               onClose={() => setSelectedCategory(null)}
             />
           </div>
