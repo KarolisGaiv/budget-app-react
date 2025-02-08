@@ -9,7 +9,8 @@ interface IncomeFormProps {
 export default function IncomeForm({ preselectedCategory, onClose }: IncomeFormProps) {
   const [amount, setAmount] = useState<number>(0)
   const [category, setCategory] = useState<string>(preselectedCategory || '')
-  const [date, setDate] = useState<string>('')
+  // const [date, setDate] = useState<string>('')
+  const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0])
   const [error, setError] = useState<string>('')
 
   // custom hook to add income to user db and state
@@ -26,7 +27,8 @@ export default function IncomeForm({ preselectedCategory, onClose }: IncomeFormP
     await addIncome({ amount, category: preselectedCategory || category, date })
 
     setAmount(0)
-    setDate('')
+    // setDate('')
+    setDate(new Date().toISOString().split('T')[0])
     setError('')
     onClose() // Close modal after submission
   }
