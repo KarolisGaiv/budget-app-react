@@ -20,6 +20,7 @@ export default function useFindRecord() {
         .select('*')
         .eq('user_id', user.id)
         .eq('id', recordID)
+        .single()
 
       if (error) {
         console.error('Failed to load record details: ', error.message)

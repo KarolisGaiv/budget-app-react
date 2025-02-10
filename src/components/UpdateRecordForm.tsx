@@ -1,5 +1,5 @@
 import useFindRecord from "@/hooks/useFindRecord";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type UpdateRecordFormProps = {
   recordID: number;
@@ -7,12 +7,13 @@ type UpdateRecordFormProps = {
 };
 
 export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormProps) {
+  const [recordDetails,setRecordDetails] = useState([])
   const findRecord = useFindRecord();
 
   useEffect(() => {
     async function fetchRecord() {
       const recordData = await findRecord(recordID, type);
-      console.log("Fetched record:", recordData);
+      setRecordDetails(recordData)
     }
 
     fetchRecord();
