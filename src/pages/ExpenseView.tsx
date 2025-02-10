@@ -4,6 +4,7 @@ import ExpenseForm from '@/components/ExpenseForm'
 import useDeleteCategory from '@/hooks/useDeleteCategory'
 import CategoryForm from '@/components/CategoryForm'
 import { calculateTotalExpense } from '@/utils/expenseCalculation'
+import UpdateRecordForm from '@/components/UpdateRecordForm'
 
 export default function ExpenseView() {
   const userCategories = useUserStore((state: UserState) => state.categories)
@@ -12,6 +13,8 @@ export default function ExpenseView() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [isCategoryFormVisible, setIsCategoryFormVisible] = useState(false)
   const modalOverlayRef = useRef<HTMLDivElement>(null) // Ref for the new expense form modal overlay
+  const [isUpdateRecordFormOpen, setIsUpdateRecordFormOpen] = useState(false)
+  const [recordToUpdate, setRecordToUpdate] = useState<number | null>(null)
 
   function handleCategoryDelete(id: number) {
     removeCategory(id)
@@ -33,6 +36,14 @@ export default function ExpenseView() {
     if (event.target === modalOverlayRef.current) {
       handleCloseCategoryForm()
     }
+  }
+
+  function toggleUpdateRecordForm(recordID: number) {
+    setIsUpdateRecordFormOpen(prev => {
+      const isOpening = !prev
+      setRecordToUpdate(isOpening ? recordID : null)
+      return isOpening
+    })
   }
 
   return (
@@ -74,12 +85,13 @@ export default function ExpenseView() {
                 <ul className="mt-2 space-y-2">
                   {categoryExpenses.map(expense => (
                     <li
+                      onClick={() => toggleUpdateRecordForm(expense.id)}
                       key={expense.id}
                       className="p-2 rounded-md shadow-sm flex justify-between hover:bg-sky-700 cursor-pointer
 "
                     >
                       <span className="font-medium">
-                        {expense.amount} {expense.currency}
+                        {expense.amount} {expense.currency} {expense.id}
                       </span>
                     </li>
                   ))}
@@ -103,6 +115,12 @@ export default function ExpenseView() {
           onClick={handleOverlayClick}
         >
           <CategoryForm onClose={handleCloseCategoryForm} />
+        </div>
+      )}
+
+      {isUpdateRecordFormOpen && recordToUpdate !== null && (
+        <div>
+          <UpdateRecordForm recordID={recordToUpdate} />
         </div>
       )}
     </div>
