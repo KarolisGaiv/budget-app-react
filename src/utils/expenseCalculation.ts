@@ -10,29 +10,29 @@ function calculateTotalExpense(data: Expense[]): number {
 }
 
 /**
- * Calculates the total income amount for each category from a list of users income
+ * Calculates the total expense amount for each category from a list of users expenses
  *
- * @param {Income[]} userIncomeData  An array of user income records, which can be retreived from user store
+ * @param {Expense[]} userExpensesData  An array of user expenses records, which can be retreived from user store
  * @returns {Array<CategoryTotals>} An array of objects, where each object contains a "category" and "totalAmount"
  */
 
-// function calculateIncomeByCategory(userIncomeData: Income[]): uniqueCategoryData[] {
-//   const uniqueCategories = [...new Set(userIncomeData.map(record => record.category))]
+function calculateExpensesByCategory(userExpensesData: Expense[]): uniqueCategoryData[] {
+  const uniqueCategories = [...new Set(userExpensesData.map(record => record.category))]
 
-//   const categoryTotals: uniqueCategoryData[] = []
+  const categoryTotals: uniqueCategoryData[] = []
 
-//   uniqueCategories.forEach(category => {
-//     // filter data for current category
-//     const filteredData = userIncomeData.filter(record => record.category === category)
-//     // calculate total amount for filtered data
-//     const totalAmount = filteredData.reduce((sum, record) => sum + record.amount, 0)
+  uniqueCategories.forEach(category => {
+    // filter data for current category
+    const filteredData = userExpensesData.filter(record => record.category === category)
+    // calculate total amount for filtered data
+    const totalAmount = filteredData.reduce((sum, record) => sum + record.amount, 0)
 
-//     const categoryTotalObject = { category: category, totalAmount: totalAmount }
+    const categoryTotalObject = { category: category, totalAmount: totalAmount }
 
-//     categoryTotals.push(categoryTotalObject)
-//   })
+    categoryTotals.push(categoryTotalObject)
+  })
 
-//   return categoryTotals
-// }
+  return categoryTotals
+}
 
-export { calculateTotalExpense }
+export { calculateTotalExpense, calculateExpensesByCategory }
