@@ -119,7 +119,9 @@ export default function ExpenseView() {
       )}
 
       {isUpdateRecordFormOpen && recordToUpdate !== null && (
-        <div>
+        <div ref={modalOverlayRef}
+        className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        onClick={handleOverlayClick}>
           <UpdateRecordForm recordID={recordToUpdate} type="expenses" />
         </div>
       )}
