@@ -120,7 +120,7 @@ export default function ExpenseView() {
 
       {isUpdateRecordFormOpen && recordToUpdate !== null && (
         <div>
-          <UpdateRecordForm recordID={recordToUpdate} />
+          <UpdateRecordForm recordID={recordToUpdate} type="expenses" />
         </div>
       )}
     </div>
