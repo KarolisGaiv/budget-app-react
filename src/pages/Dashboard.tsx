@@ -1,6 +1,7 @@
 import { useUserStore, UserState } from '@/stores/user'
 import useCategories from '@/hooks/useCategories'
 import useLoadIncome from '@/hooks/useLoadIncome'
+import useExpenses from '@/hooks/useExpenses'
 import { useState } from 'react'
 import ExpenseView from '@/pages/ExpenseView'
 import IncomeView from '@/pages/IncomeView'
@@ -8,6 +9,7 @@ import IncomeView from '@/pages/IncomeView'
 export default function Dashboard() {
   useCategories()
   useLoadIncome()
+  useExpenses()
   const user = useUserStore((state: UserState) => state.user)
   const [activeView, setActiveView] = useState<'expenses' | 'income'>('expenses')
 

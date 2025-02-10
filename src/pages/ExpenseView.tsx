@@ -91,7 +91,7 @@ export default function ExpenseView() {
 "
                     >
                       <span className="font-medium">
-                        {expense.amount} {expense.currency} {expense.id}
+                        {expense.amount} {expense.currency}
                       </span>
                     </li>
                   ))}
