@@ -1,6 +1,7 @@
 import useFindRecord from '@/hooks/useFindRecord'
 import React, { useEffect, useState } from 'react'
 import { Expense, Income } from '@/stores/user'
+import useDeleteExpense from '@/hooks/useDeleteExpense'
 
 type UpdateRecordFormProps = {
   recordID: number
@@ -10,6 +11,7 @@ type UpdateRecordFormProps = {
 export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormProps) {
   const [recordDetails, setRecordDetails] = useState<Expense | Income | null>(null)
   const findRecord = useFindRecord()
+  const deleteExpense = useDeleteExpense()
 
   useEffect(() => {
     async function fetchRecord() {
@@ -23,8 +25,10 @@ export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormPro
 
   function handleRecordUpdate(e: React.FormEvent) {
     e.preventDefault()
+  }
 
-    console.log('record details after update: ', recordDetails)
+  function handleDeleteRecord(recordID: number) {
+    deleteExpense(recordID)
   }
 
   if (!recordDetails) return <div>Loading...</div>
@@ -89,6 +93,13 @@ export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormPro
             className="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Cancel
+          </button>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={() => handleDeleteRecord(recordDetails.id)}
+          >
+            Delete
           </button>
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
