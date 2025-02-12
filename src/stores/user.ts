@@ -43,6 +43,7 @@ export type UserState = {
   addExpense: (expense: Expense) => void
   setExpenses: (expense: Expense[]) => void
   deleteExpense: (expenseID: number) => void
+  updateExpenseRecord: (updatedRecordDetails: Partial<Expense>) => void
   setIncome: (income: Income[]) => void
   addIncome: (income: Income) => void
 }
