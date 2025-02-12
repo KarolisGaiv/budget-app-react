@@ -51,7 +51,7 @@ export type UserState = {
 export const useUserStore = create<UserState>()(
   devtools(
     persist(
-      (set, get) => ({
+      set => ({
         // Initial state
         user: null,
         categories: [],
