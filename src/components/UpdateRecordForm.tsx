@@ -2,6 +2,7 @@ import useFindRecord from '@/hooks/useFindRecord'
 import React, { useEffect, useState } from 'react'
 import { Expense, Income } from '@/stores/user'
 import useDeleteExpense from '@/hooks/useDeleteExpense'
+import useUpdateExpense from '@/hooks/useUpdateExpense'
 
 type UpdateRecordFormProps = {
   recordID: number
@@ -13,6 +14,7 @@ export default function UpdateRecordForm({ recordID, type, onClose }: UpdateReco
   const [recordDetails, setRecordDetails] = useState<Expense | Income | null>(null)
   const findRecord = useFindRecord()
   const deleteExpense = useDeleteExpense()
+  const updateRecord = useUpdateExpense()
 
   useEffect(() => {
     async function fetchRecord() {
@@ -27,6 +29,7 @@ export default function UpdateRecordForm({ recordID, type, onClose }: UpdateReco
   function handleRecordUpdate(e: React.FormEvent) {
     e.preventDefault()
     console.log('record details: ', recordDetails)
+    updateRecord(recordDetails as Partial<Expense>)
   }
 
   function handleDeleteRecord(recordID: number) {
