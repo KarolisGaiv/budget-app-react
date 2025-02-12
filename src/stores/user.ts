@@ -72,6 +72,14 @@ export const useUserStore = create<UserState>()(
               category.id === categoryID ? { ...category, name: newName } : category,
             ),
           })),
+        updateExpenseRecord: (updatedDetails: Partial<Expense>) =>
+          set(state => ({
+            expenses: state.expenses.map(expenseRecord =>
+              expenseRecord.id === updatedDetails.id
+                ? { ...expenseRecord, ...updatedDetails }
+                : expenseRecord,
+            ),
+          })),
         addExpense: newExpenseRecord =>
           set(state => ({
             expenses: [...state.expenses, newExpenseRecord],

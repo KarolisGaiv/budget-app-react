@@ -26,6 +26,7 @@ export default function UpdateRecordForm({ recordID, type, onClose }: UpdateReco
 
   function handleRecordUpdate(e: React.FormEvent) {
     e.preventDefault()
+    console.log('record details: ', recordDetails)
   }
 
   function handleDeleteRecord(recordID: number) {
