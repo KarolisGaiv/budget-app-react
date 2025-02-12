@@ -6,9 +6,10 @@ import useDeleteExpense from '@/hooks/useDeleteExpense'
 type UpdateRecordFormProps = {
   recordID: number
   type: 'expenses' | 'income'
+  onClose: () => void
 }
 
-export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormProps) {
+export default function UpdateRecordForm({ recordID, type, onClose }: UpdateRecordFormProps) {
   const [recordDetails, setRecordDetails] = useState<Expense | Income | null>(null)
   const findRecord = useFindRecord()
   const deleteExpense = useDeleteExpense()
@@ -89,7 +90,7 @@ export default function UpdateRecordForm({ recordID, type }: UpdateRecordFormPro
         <div className="flex justify-end gap-2 mt-4">
           <button
             type="button"
-            onClick={() => console.log('Cancel clicked')}
+            onClick={onClose}
             className="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Cancel
