@@ -13,6 +13,8 @@ export default function Dashboard() {
   const user = useUserStore((state: UserState) => state.user)
   const [activeView, setActiveView] = useState<'expenses' | 'income'>('expenses')
 
+  console.log('test')
+
   if (!user) {
     return (
       <p className="text-center text-xl text-gray-400">Please log in to access the dashboard.</p>
