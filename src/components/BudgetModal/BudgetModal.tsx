@@ -19,7 +19,7 @@ function BudgetModal() {
   return (
     <div className="rounded-lg py-4 bg-white p-8">
       <header className="flex justify-between my-6">
-        <h1 className="text-black text-preset-1">Add New Budget</h1>
+        <h1 className=" text-preset-1">Add New Budget</h1>
         <button>Close</button>
       </header>
       <span>
