@@ -1,4 +1,4 @@
-import BudgetModal from '@/components/BudgetModal'
+import BudgetModal from '@/components/BudgetModal/BudgetModal'
 
 function BudgetsView() {
   return (
