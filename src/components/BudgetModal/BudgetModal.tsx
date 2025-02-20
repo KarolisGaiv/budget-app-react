@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-function BudgetModal() {
+interface BudgetModalProps {
+  onClose: () => void
+}
+
+function BudgetModal({ onClose }: BudgetModalProps) {
   const [budgetCategory, setBudgetCategory] = useState<string>('')
   const [budgetAmount, setBudgetAmount] = useState<string>('')
   const [themeColor, setThemeColor] = useState<string>('')
@@ -20,7 +24,9 @@ function BudgetModal() {
     <div className="rounded-lg py-4 bg-white p-8">
       <header className="flex justify-between my-6">
         <h1 className=" text-preset-1">Add New Budget</h1>
-        <button>Close</button>
+        <button className="text-red-700" onClick={onClose}>
+          Close
+        </button>
       </header>
       <span className="text-preset-4">
         Choose a category to set a spending budget. These categories can help you monitor spending.
