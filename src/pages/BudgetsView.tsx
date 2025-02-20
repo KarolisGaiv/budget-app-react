@@ -6,7 +6,6 @@ function BudgetsView() {
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      // Crucial check!
       setIsModalOpen(false)
     }
   }
