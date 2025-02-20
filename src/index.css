@@ -6,9 +6,25 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Public Sans Regular';
+  src: url('/src/assets/fonts/PublicSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
 .text-preset-1 {
   font-family: 'Public Sans Bold', sans-serif;
   @apply text-[32px] leading-[120%] tracking-normal text-gray-900;
+}
+
+.text-preset-4 {
+  font-family: 'Public Sans Regular', sans-serif;
+  @apply text-[14px] leading-[150%] tracking-normal text-gray-500;
+}
+
+.text-preset-4-bold {
+  font-family: 'Public Sans Bold', sans-serif;
+  @apply text-[14px] leading-[150%] tracking-normal text-gray-500;
 }
 
 html,

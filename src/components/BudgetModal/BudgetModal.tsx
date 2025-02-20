@@ -22,7 +22,7 @@ function BudgetModal() {
         <h1 className=" text-preset-1">Add New Budget</h1>
         <button>Close</button>
       </header>
-      <span>
+      <span className="text-preset-4">
         Choose a category to set a spending budget. These categories can help you monitor spending.
       </span>
       <form onSubmit={handleSubmit}>
