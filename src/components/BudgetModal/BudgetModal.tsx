@@ -25,26 +25,36 @@ function BudgetModal() {
       <span className="text-preset-4">
         Choose a category to set a spending budget. These categories can help you monitor spending.
       </span>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="budgetCategory">Budget Category</label>
-        <input
-          value={budgetCategory}
-          type="text"
-          id="budgetCategory"
-          required={true}
-          placeholder="Enter Budget Category Name"
-          onChange={e => setBudgetCategory(e.target.value)}
-        />
-        <label htmlFor="amount">Maximum Spend</label>
-        <input
-          type="number"
-          id="amount"
-          required={true}
-          placeholder="e.g. 2000"
-          value={budgetAmount}
-          onChange={e => setBudgetAmount(e.target.value)}
-          min={0}
-        />
+      <form onSubmit={handleSubmit} className="mt-4 flex-col">
+        <div className="flex flex-col">
+          <label htmlFor="budgetCategory" className="text-preset-5-bold">
+            Budget Category
+          </label>
+          <input
+            className="rounded-lg text-preset-4"
+            value={budgetCategory}
+            type="text"
+            id="budgetCategory"
+            required={true}
+            placeholder="Enter Budget Category Name"
+            onChange={e => setBudgetCategory(e.target.value)}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="amount" className="text-preset-5-bold">
+            Maximum Spend
+          </label>
+          <input
+            className="rounded-lg text-preset-4"
+            type="number"
+            id="amount"
+            required={true}
+            placeholder="e.g. 2000"
+            value={budgetAmount}
+            onChange={e => setBudgetAmount(e.target.value)}
+            min={0}
+          />
+        </div>
         <label htmlFor="themeColor">Theme</label>
         <select name="themeColor" id="themeColor" onChange={e => setThemeColor(e.target.value)}>
           {colorTypes.map(color => (
