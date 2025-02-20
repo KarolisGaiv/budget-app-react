@@ -67,6 +67,10 @@ body,
   overflow-x: hidden;
 }
 
+.form-container button {
+  color: white;
+}
+
 /* Grid */
 
 .container {
@@ -210,7 +214,8 @@ body,
   text-transform: uppercase;
 } */
 
-input {
+input,
+select {
   border: 1px solid var(--custom-color-beige);
   padding: 12px 20px;
   margin: 4px 0 16px 0;
@@ -277,7 +282,7 @@ input[disabled] {
 
 /* Button */
 
-button,
+/* button,
 .button {
   color: var(--custom-color);
   border: var(--custom-border);
@@ -290,7 +295,7 @@ button,
   text-align: center;
   font-size: 0.9rem;
   text-transform: uppercase;
-}
+} */
 
 button.primary,
 .button.primary {

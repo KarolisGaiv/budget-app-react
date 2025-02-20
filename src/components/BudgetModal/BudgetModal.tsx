@@ -25,13 +25,13 @@ function BudgetModal() {
       <span className="text-preset-4">
         Choose a category to set a spending budget. These categories can help you monitor spending.
       </span>
-      <form onSubmit={handleSubmit} className="mt-4 flex-col">
+      <form onSubmit={handleSubmit} className="mt-4 flex-col form-container">
         <div className="flex flex-col">
           <label htmlFor="budgetCategory" className="text-preset-5-bold">
             Budget Category
           </label>
           <input
-            className="rounded-lg text-preset-4"
+            className="rounded-lg text-preset-4 placeholder:text-gray-900"
             value={budgetCategory}
             type="text"
             id="budgetCategory"
@@ -55,16 +55,31 @@ function BudgetModal() {
             min={0}
           />
         </div>
-        <label htmlFor="themeColor">Theme</label>
-        <select name="themeColor" id="themeColor" onChange={e => setThemeColor(e.target.value)}>
-          {colorTypes.map(color => (
-            <option key={color} value={color}>
-              {color}
-            </option>
-          ))}
-        </select>
-        <div>
-          <button type="submit">Add Budget</button>
+        <div className="flex flex-col">
+          <label htmlFor="themeColor" className="text-preset-5-bold">
+            Theme
+          </label>
+          <select
+            name="themeColor"
+            id="themeColor"
+            onChange={e => setThemeColor(e.target.value)}
+            className="rounded-lg text-preset-4"
+          >
+            {colorTypes.map(color => (
+              <option key={color} value={color}>
+                {color}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col w-full">
+          <button
+            type="submit"
+            className="bg-gray-900 p-4 rounded-xl text-preset-4-bold text-white"
+          >
+            Add Budget
+          </button>
         </div>
       </form>
     </div>
