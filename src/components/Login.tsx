@@ -25,7 +25,7 @@ export default function Login() {
     >
       <h1 className="flex-auto text-preset-1 mb-8">Login</h1>
       <div>
-        <label className="block text-sm font-medium">Email:</label>
+        <label className="block text-preset-5-bold">Email</label>
         <input
           type="email"
           value={email}
