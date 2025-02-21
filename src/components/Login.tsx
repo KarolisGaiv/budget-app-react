@@ -50,7 +50,6 @@ export default function Login() {
         <button
           type="submit"
           className=" w-full bg-gray-900 p-4 rounded-xl text-preset-4-bold text-white"
-          // className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Sign In
         </button>
