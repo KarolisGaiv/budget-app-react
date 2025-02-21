@@ -23,7 +23,7 @@ export default function Login() {
       onSubmit={handleLogin}
       className="max-w-sm mx-auto p-8 bg-white  rounded-lg space-y-4 mt-12"
     >
-      <h1 className="flex-auto text-center text-3xl">Login</h1>
+      <h1 className="flex-auto text-preset-1">Login</h1>
       <div>
         <label className="block text-sm font-medium">Email:</label>
         <input
