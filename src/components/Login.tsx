@@ -24,7 +24,7 @@ export default function Login() {
       className="max-w-sm mx-auto p-8 bg-white  rounded-lg space-y-4 mt-12"
     >
       <h1 className="flex-auto text-preset-1 mb-8">Login</h1>
-      <div>
+      <div className="my-1">
         <label className="block text-preset-5-bold">Email</label>
         <input
           type="email"
