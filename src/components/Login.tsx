@@ -31,19 +31,18 @@ export default function Login() {
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
-          className="w-full rounded-lg "
+          className="w-full rounded-lg"
         />
       </div>
 
       <div>
-        <label className="block text-preset-5-bold">Password:</label>
+        <label className="block text-preset-5-bold">Password</label>
         <input
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
-          className="w-full p-2 border border-gray-600 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter your password"
+          className="w-full rounded-lg"
         />
       </div>
 
