@@ -46,7 +46,7 @@ export default function Login() {
         />
       </div>
 
-      <div className="flex flex-col items-center gap-4 form-container">
+      <div className="flex flex-col items-center gap-4 form-container mb-8">
         <button
           type="submit"
           className=" w-full bg-gray-900 p-4 rounded-xl text-preset-4-bold text-white"
