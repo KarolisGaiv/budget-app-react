@@ -55,6 +55,12 @@ export default function Login() {
         </button>
         {error && <p className="text-red-500 text-sm">{error}</p>}
       </div>
+      <footer className="flex flex-col items-center">
+        <span className="text-preset-4">
+          Need to create an account? <link href="/register" />
+          Sign Up
+        </span>
+      </footer>
     </form>
   )
 }
