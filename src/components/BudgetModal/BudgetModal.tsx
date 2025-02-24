@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { IoCloseCircleOutline } from 'react-icons/io5'
 
 interface BudgetModalProps {
   onClose: () => void
@@ -24,8 +25,8 @@ function BudgetModal({ onClose }: BudgetModalProps) {
     <div className="rounded-lg py-4 bg-white p-8">
       <header className="flex justify-between my-6">
         <h1 className=" text-preset-1">Add New Budget</h1>
-        <button className="text-red-700" onClick={onClose}>
-          Close
+        <button className="text-gray-900 text-2xl" onClick={onClose}>
+          <IoCloseCircleOutline size={32} />
         </button>
       </header>
       <span className="text-preset-4">
