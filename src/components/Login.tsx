@@ -57,8 +57,11 @@ export default function Login() {
       </div>
       <footer className="flex flex-col items-center">
         <span className="text-preset-4">
-          Need to create an account? <link href="/register" />
-          Sign Up
+          Need to create an account?
+          <a className="text-preset-4-bold" href="/register">
+            {' '}
+            Sign Up
+          </a>
         </span>
       </footer>
     </form>
